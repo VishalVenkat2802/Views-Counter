@@ -1,7 +1,6 @@
-<!doctype html>
-<html lang="en">
-<body>
+<html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <h1 style="color: whitesmoke; 
                text-align: center;">
     Hello do you know something ?  </h1>
@@ -13,8 +12,32 @@
             just cick the Google button below and login with your credentials.</h2>
     <body background=
 "https://c0.wallpaperflare.com/preview/697/898/445/cloud-computing-illustration-technology.jpg"
-      style="background-repeat: no-repeat;
+     style="background-repeat: no-repeat;
       background-size: cover;">
+  <meta name="google-signin-client_id" content="421065572375-bsg45b1mn9csgcadnlvpnr169pssd0dm.apps.googleusercontent.com">
+</head>
+<body>
+  <div id="my-signin2"></div>
+  <script>
+    function onSuccess(googleUser) {
+      console.log('Logged in as: ' + googleUser.getBasicProfile().getName());
+    }
+    function onFailure(error) {
+      console.log(error);
+    }
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile email',
+        'width': 240,
+        'height': 50,
+        'longtitle': true,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+  </script>
 
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
 </body>
 </html>
